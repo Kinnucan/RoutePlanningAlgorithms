@@ -270,12 +270,14 @@ class DijkstraMazeAdvisor(MazeTaskAdvisor):
         """This creates and returns a proper start state for this particular
         class. This is really just the same as the UCS Maze Advisor.
         """
-        # TODO: Implement this by copying the UCS code here (read it!)
-        pass
+        return MazeState(startRow, startCol, [], self.maze.getWeight(startRow, startCol))
 
     def _buildNeighborState(self, currState, direction, neighRow, neighCol):
         """Given the current state and the location of the neighbor, this builds
         a new state, computing the cost in the same way as UCS does."""
-        # TODO: Implement this by copying the UCS code here (read it!)
-        pass
+        newPath = currState.getPath()[:]
+        newPath.append(direction)
+        oldCost = currState.getCost()
+        newCost = self.maze.getWeight(neighRow, neighCol)
+        return MazeState(neighRow, neighCol, newPath, oldCost + newCost)
 
