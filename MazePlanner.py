@@ -600,9 +600,9 @@ class MazeGUI:
             # taskAdvisor = AStarMazeAdvisor(self.maze, sRow, sCol, gRow, gCol)
             # self.currentSearcher = BestFirstSearchSolver(taskAdvisor)
         elif self.currentSearch == 'dijkstra':
-            self._postMessage("Dijkstra's is not implemented yet, you must do this!")
-            # taskAdvisor = DijkstraMazeAdvisor(self.maze, sRow, sCol, gRow, gCol)
-            # self.currentSearcher = DijkstraSearchSolver(taskAdvisor)
+            # self._postMessage("Dijkstra's is not implemented yet, you must do this!")
+             taskAdvisor = DijkstraMazeAdvisor(self.maze, sRow, sCol, gRow, gCol)
+             self.currentSearcher = DijkstraSearchSolver(taskAdvisor)
         self.currentSearcher.initSearch()
         self.disableEdit()
         self.enableSearch()
