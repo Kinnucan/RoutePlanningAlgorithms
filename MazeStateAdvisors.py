@@ -266,6 +266,14 @@ class DijkstraMazeAdvisor(MazeTaskAdvisor):
     used for A* search, using the AStarState, which maintains both g and h costs. It is intended to
     be paired with a BestFirstSearchSolver."""
 
+    def __init__(self, mazeMap, startRow, startCol, goalRow, goalCol):
+        """Given a map of a maze, the starting and goal locations, this initializes the variables
+        that hold details of the problem"""
+        self.maze = mazeMap
+        self.goalRow = startRow
+        self.goalCol = startCol
+        self.startState = self._setupInitialState(goalRow, goalCol)
+
     def _setupInitialState(self, startRow, startCol):
         """This creates and returns a proper start state for this particular
         class. This is really just the same as the UCS Maze Advisor.
@@ -280,4 +288,8 @@ class DijkstraMazeAdvisor(MazeTaskAdvisor):
         oldCost = currState.getCost()
         newCost = self.maze.getWeight(neighRow, neighCol)
         return MazeState(neighRow, neighCol, newPath, oldCost + newCost)
+
+    def translatePath(self, mazeStates):
+        movementDirections = []
+        # for state in mazeStates:
 
